@@ -32,6 +32,11 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'git' \
+  'homebrew' \
+  'osx' \
+  'syntax-highlighting' \
+  'history-substring-search' \
   'prompt'
 
 #
@@ -123,13 +128,6 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 
 # Auto start a session when Zsh is launched in a SSH connection.
 # zstyle ':prezto:module:screen:auto-start' remote 'yes'
-
-#
-# SSH
-#
-
-# Set the SSH identities to load into the agent.
-# zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_rsa2' 'id_github'
 
 #
 # Syntax Highlighting
