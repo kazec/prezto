@@ -37,6 +37,9 @@ function proxyoff() {
   echo '' >! $HOME/.config/curlrc
 }
 
+# Enable proxy by default.
+proxyon
+
 # Open $(pwd)/$@ in Finder.app.
 function opend() {
   if [ $# -eq 0 ]; then
@@ -76,4 +79,8 @@ function filesize() {
 	else
 		du $arg .[^.]* ./*;
 	fi;
+}
+
+function xman() {
+  open "x-man-page://$@"
 }
