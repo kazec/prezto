@@ -8,3 +8,4 @@
 export ZDOTDIR="$HOME/.zsh"
 export CURL_HOME="$HOME/.config"
 export PIP_CONFIG_FILE="$HOME/.config/pip/pip.conf"
+export GPG_TTY=$(tty)
