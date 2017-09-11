@@ -19,7 +19,7 @@ export PAGER='less'
 #
 
 if [[ -z "$LANG" ]]; then
-  export LANG='zh_CN.UTF-8'
+  export LANG='en_US.UTF-8'
 fi
 
 #
@@ -62,3 +62,11 @@ if [[ ! -d "$TMPDIR" ]]; then
   mkdir "$TMPDIR"
   chmod 700 "$TMPDIR"
 fi
+
+#
+# Homebrew
+#
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_AUTO_UPDATE=1
+# export HOMEBREW_NO_GITHUB_API=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1

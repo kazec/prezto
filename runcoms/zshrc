@@ -9,14 +9,17 @@
 source "$ZDOTDIR/prezto/init.zsh"
 
 # Project shortcuts.
-alias p='cd ~/.projects'
-alias pswift='cd ~/.projects/Swift'
-alias pios='cd ~/.projects/iOS'
-alias pwebsite='cd ~/.projects/Website'
+alias p='cd ~/Workspaces'
+alias pswift='cd ~/Workspaces/Swift'
+alias pios='cd ~/Workspaces/iOS'
+alias pfrontend='cd ~/Workspaces/Frontend'
+alias pmisc='cd ~/Workspaces/Misc'
 
 # Show hidden files in Finder.app.
 alias findershow='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
 alias finderhide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
+
+alias ydl='youtube-dl'
 
 # Enable proxy.
 function proxyon() {
@@ -37,8 +40,12 @@ function proxyoff() {
   echo '' >! $HOME/.config/curlrc
 }
 
-# Enable proxy by default.
-proxyon
+# Reload shadowsocks.
+function ss-reload() {
+  local plist=$HOME/Library/LaunchAgents/org.shadowsocks-libev.plist
+  launchctl unload $plist
+  launchctl load $plist
+}
 
 # Open $(pwd)/$@ in Finder.app.
 function opend() {
@@ -81,6 +88,74 @@ function filesize() {
 	fi;
 }
 
+# Open man page in a easy-to-read, standalone window.
 function xman() {
   open "x-man-page://$@"
 }
+
+# Move file to directory without retyping the name.
+function mv2d() {
+  echo mv "$1" "$2/${1##*/}_$3"
+}
+
+function b64d() {
+  echo "$@" | base64 -D
+}
+
+function b64e() {
+  echo "$@" | base64
+}
+
+function myip() {
+  dig +short myip.opendns.com @resolver1.opendns.com
+}
+
+function flushdns() {
+  sudo dscacheutil -flushcache && \
+  sudo killall -HUP mDNSResponder
+}
+
+function wifipass() {
+  security find-generic-password -D "AirPort network password" -a "$@" -gw
+}
+
+function passgen() {
+  LC_ALL=C tr -dc ${1:-"[:graph:]"} < /dev/urandom | head -c ${2:-20}
+}
+
+function mkicns() {
+    if [[ -z "$@" ]]; then
+        echo "Input file missing"
+    else
+        filename=${1%.*}
+        mkdir $filename.iconset
+        sips -z 16 16   $1 --out $filename.iconset/icon_16x16.png
+        sips -z 32 32   $1 --out $filename.iconset/icon_16x16@2x.png
+        sips -z 32 32   $1 --out $filename.iconset/icon_32x32.png
+        sips -z 64 64   $1 --out $filename.iconset/icon_32x32@2x.png
+        sips -z 128 128 $1 --out $filename.iconset/icon_128x128.png
+        sips -z 256 256 $1 --out $filename.iconset/icon_128x128@2x.png
+        sips -z 256 256 $1 --out $filename.iconset/icon_256x256.png
+        sips -z 512 512 $1 --out $filename.iconset/icon_256x256@2x.png
+        sips -z 512 512 $1 --out $filename.iconset/icon_512x512.png
+        cp $1 $filename.iconset/icon_512x512@2x.png
+        iconutil -c icns $filename.iconset
+        rm -r $filename.iconset
+    fi
+}
+
+function finderpath {
+    osascript -e 'tell application "Finder"'\
+        -e "if (${1-1} <= (count Finder windows)) then"\
+        -e "get POSIX path of (target of window ${1-1} as alias)"\
+        -e 'else' \
+        -e 'get POSIX path of (desktop as alias)'\
+        -e 'end if' \
+        -e 'end tell';
+}
+
+# Enable proxy by default.
+proxyon
+
+# Add all private keys to ssh agents.
+ssh-add -K `find ~/.ssh -name '*rsa' -print` &>/dev/null
