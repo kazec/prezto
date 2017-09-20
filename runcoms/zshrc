@@ -15,11 +15,18 @@ alias pios='cd ~/Workspaces/iOS'
 alias pfrontend='cd ~/Workspaces/Frontend'
 alias pmisc='cd ~/Workspaces/Misc'
 
+# Allow usage of 'sudo' with aliases.
+alias sudo='sudo '
+
 # Show hidden files in Finder.app.
 alias findershow='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
 alias finderhide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
 
+# Shortcuts
 alias ydl='youtube-dl'
+alias sml='streamlink'
+alias py='python'
+alias py3='python3'
 
 # Enable proxy.
 function proxyon() {
@@ -88,10 +95,16 @@ function filesize() {
 	fi;
 }
 
-# Open man page in a easy-to-read, standalone window.
+# Open man page with "x-man-page" url scheme.
 function xman() {
   open "x-man-page://$@"
 }
+
+function dman() {
+  open "dash://man:$@"
+}
+
+# Open man page in a easy-to-read, standalone window.
 
 # Move file to directory without retyping the name.
 function mv2d() {
@@ -159,3 +172,10 @@ proxyon
 
 # Add all private keys to ssh agents.
 ssh-add -K `find ~/.ssh -name '*rsa' -print` &>/dev/null
+
+# Change iTerm2's titlebar.
+if [ $TERM_PROGRAM = "iTerm.app" ]; then
+  echo -n -e "\033]6;1;bg;red;brightness;40\a"
+  echo -n -e "\033]6;1;bg;green;brightness;44\a"
+  echo -n -e "\033]6;1;bg;blue;brightness;52\a"
+fi
