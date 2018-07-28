@@ -10,10 +10,18 @@ source "$ZDOTDIR/prezto/init.zsh"
 
 # Project shortcuts.
 alias p='cd ~/Workspaces'
-alias pswift='cd ~/Workspaces/Swift'
 alias pios='cd ~/Workspaces/iOS'
-alias pfrontend='cd ~/Workspaces/Frontend'
 alias pmisc='cd ~/Workspaces/Misc'
+alias pswift='cd ~/Workspaces/Swift'
+alias pfrontend='cd ~/Workspaces/Frontend'
+
+# Lua Aliases
+alias lua='/usr/local/bin/lua-5.3'
+alias luac='/usr/local/bin/luac-5.3'
+alias luar='/usr/local/bin/luarocks-5.3'
+alias luao='/usr/local/bin/lua'
+alias luaoc='/usr/local/bin/luac'
+alias luaor='/usr/local/bin/luarocks'
 
 # Allow usage of 'sudo' with aliases.
 alias sudo='sudo '
@@ -23,19 +31,27 @@ alias findershow='defaults write com.apple.finder AppleShowAllFiles -bool true &
 alias finderhide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
 
 # Shortcuts
-alias ydl='youtube-dl'
-alias sml='streamlink'
+alias pg='ps aux | grep'
 alias py='python'
 alias py3='python3'
+alias spm='swift package'
+alias ydl='youtube-dl'
+alias sml=streamlink
+
+# Enable/Disable V2Ray
+alias v2on='launchctl load ~/Library/LaunchAgents/org.v2ray.plist'
+alias v2off='launchctl unload ~/Library/LaunchAgents/org.v2ray.plist'
+alias v2rld='v2on && v2off'
 
 # Enable proxy.
 function proxyon() {
   local host_port='127.0.0.1:8080'
+
   export http_proxy="http://$host_port"
   export https_proxy=$http_proxy
   git config --global http.proxy $host_port
   git config --global https.proxy $host_port
-  echo 'proxy = "socks5://127.0.0.1:1080"' >! $HOME/.config/curlrc
+  echo 'proxy = "socks5://127.0.0.1:1080"' >! $HOME/.config/.curlrc
 }
 
 # Disable proxy.
@@ -44,14 +60,7 @@ function proxyoff() {
   export https_proxy=''
   git config --global http.proxy ''
   git config --global https.proxy ''
-  echo '' >! $HOME/.config/curlrc
-}
-
-# Reload shadowsocks.
-function ss-reload() {
-  local plist=$HOME/Library/LaunchAgents/org.shadowsocks-libev.plist
-  launchctl unload $plist
-  launchctl load $plist
+  echo '' >! $HOME/.config/.curlrc
 }
 
 # Open $(pwd)/$@ in Finder.app.
@@ -74,13 +83,6 @@ function reload() {
   exec $SHELL -l
 }
 
-# Reload shadowsocks.
-function ss-reload() {
-  local plist="$HOME/Library/LaunchAgents/org.shadowsocks-libev.plist"
-  launchctl unload $plist
-  launchctl load $plist
-}
-
 # File size calculator.
 function filesize() {
 	if du -b /dev/null > /dev/null 2>&1; then
@@ -95,16 +97,15 @@ function filesize() {
 	fi;
 }
 
-# Open man page with "x-man-page" url scheme.
-function xman() {
-  open "x-man-page://$@"
-}
-
+# Open man page with Dash app.
 function dman() {
   open "dash://man:$@"
 }
 
 # Open man page in a easy-to-read, standalone window.
+function xman() {
+  open "x-man-page://$@"
+}
 
 # Move file to directory without retyping the name.
 function mv2d() {
@@ -172,10 +173,3 @@ proxyon
 
 # Add all private keys to ssh agents.
 ssh-add -K `find ~/.ssh -name '*rsa' -print` &>/dev/null
-
-# Change iTerm2's titlebar.
-if [ $TERM_PROGRAM = "iTerm.app" ]; then
-  echo -n -e "\033]6;1;bg;red;brightness;40\a"
-  echo -n -e "\033]6;1;bg;green;brightness;44\a"
-  echo -n -e "\033]6;1;bg;blue;brightness;52\a"
-fi
