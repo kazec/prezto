@@ -23,10 +23,7 @@ alias luac='/usr/local/bin/luac-5.3'
 alias luar='/usr/local/bin/luarocks-5.3'
 alias luao='/usr/local/bin/lua'
 alias luaoc='/usr/local/bin/luac'
-alias luaor='/usr/local/bin/luarocks'
-
-## Allow usage of 'sudo' with aliases.
-alias sudo='sudo '
+alias luaor='/usr/local/bin/luarocks'T
 
 ## Show hidden files in Finder.app.
 alias findershow='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
@@ -35,7 +32,7 @@ alias finderhide='defaults write com.apple.finder AppleShowAllFiles -bool false 
 ## Enable/Disable V2Ray
 alias v2on='launchctl load ~/Library/LaunchAgents/org.v2ray.plist'
 alias v2off='launchctl unload ~/Library/LaunchAgents/org.v2ray.plist'
-alias v2rld='v2on && v2off'
+alias v2rld='v2off && v2on'
 
 ## Miscellaneous shortcuts.
 alias pg='ps aux | grep'
