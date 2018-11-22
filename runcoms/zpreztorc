@@ -226,4 +226,4 @@ zstyle ':prezto:module:utility' safe-ops 'no'
 # SSH
 #
 
-zstyle ':prezto:module:ssh:load' identities 'github_rsa' 'router_rsa'
+zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'github_rsa'
