@@ -6,6 +6,7 @@
 #
 
 # Source Prezto.
+
 source "$ZDOTDIR/prezto/init.zsh"
 
 # Aliases
