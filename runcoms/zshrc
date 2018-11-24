@@ -23,8 +23,8 @@ alias pswift='cd ~/Workspaces/Swift'
 alias pfrontend='cd ~/Workspaces/Frontend'
 
 ## Show hidden files in Finder.app.
-alias findershow='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
-alias finderhide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
+alias fshow='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
+alias fhide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
 
 ## Enable/Disable V2Ray
 alias v2on='launchctl load ~/Library/LaunchAgents/org.v2ray.plist'
