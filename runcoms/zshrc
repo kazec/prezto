@@ -30,6 +30,7 @@ alias fhide='defaults write com.apple.finder AppleShowAllFiles -bool false && ki
 alias v2on='launchctl load ~/Library/LaunchAgents/org.v2ray.plist'
 alias v2off='launchctl unload ~/Library/LaunchAgents/org.v2ray.plist'
 alias v2rld='v2off && v2on'
+alias v2edit='cot ~/.config/v2ray/config.json'
 
 ## Git shortcuts.
 alias gcAm='git add . && gcam'
