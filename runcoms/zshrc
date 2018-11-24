@@ -41,6 +41,7 @@ alias gS='git status'
 alias gD='git diff'
 alias gmc='git merge --continue'
 alias gpu='git push -u'
+alias gP="git pull"
 
 ## Misc shortcuts.
 alias pg='ps aux | grep'
