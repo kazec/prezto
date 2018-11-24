@@ -33,9 +33,10 @@ alias v2rld='v2off && v2on'
 alias v2edit='cot ~/.config/v2ray/config.json'
 
 ## Git shortcuts.
+alias gbvv="git branch -vv"
 alias gcAm='git add . && gcam'
 alias gC='git checkout'
-alias gC='git checkout -f'
+alias gCf='git checkout -f'
 alias gS='git status'
 alias gD='git diff'
 alias gmc='git merge --continue'
