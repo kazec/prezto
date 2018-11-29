@@ -16,11 +16,8 @@ source "$ZDOTDIR/prezto/init.zsh"
 # Aliases
 
 ## Project shortcuts.
-alias p='cd ~/Workspaces'
-alias pios='cd ~/Workspaces/iOS'
-alias pmisc='cd ~/Workspaces/Misc'
-alias pswift='cd ~/Workspaces/Swift'
-alias pfrontend='cd ~/Workspaces/Frontend'
+alias p='cd ~/Projects'
+alias pm='cd ~/Projects/MBox'
 
 ## Show hidden files in Finder.app.
 alias fshow='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
@@ -42,6 +39,15 @@ alias gD='git diff'
 alias gmc='git merge --continue'
 alias gpu='git push -u'
 alias gP="git pull"
+
+## MBox shortcuts.
+alias mS='mbox status'
+alias mpi='mbox pod install'
+alias mpu='mbox pod update'
+alias mpf='mbox pod feature free'
+alias mpfs='mbox pod feature start'
+alias mpfr='mbox pod feature remove'
+alias mpfm='mbox pod feature merge'
 
 ## Misc shortcuts.
 alias lg='la | grep'
