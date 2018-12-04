@@ -44,10 +44,10 @@ alias gP="git pull"
 alias mS='mbox status'
 alias mpi='mbox pod install'
 alias mpu='mbox pod update'
-alias mpf='mbox pod feature free'
-alias mpfs='mbox pod feature start'
-alias mpfr='mbox pod feature remove'
-alias mpfm='mbox pod feature merge'
+alias mff='mbox feature free'
+alias mfs='mbox feature start'
+alias mfr='mbox feature remove'
+alias mfm='mbox feature merge'
 
 ## Misc shortcuts.
 alias lg='la | grep'
