@@ -48,6 +48,8 @@ alias mff='mbox feature free'
 alias mfs='mbox feature start'
 alias mfr='mbox feature remove'
 alias mfm='mbox feature merge'
+alias mdd='mbox fastlane do_debug_config'
+alias mud='mbox fastlane undo_debug_config'
 
 ## Misc shortcuts.
 alias lg='la | grep'
