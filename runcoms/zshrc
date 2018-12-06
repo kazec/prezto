@@ -31,10 +31,12 @@ alias v2edit='cot ~/.config/v2ray/config.json'
 
 ## Git shortcuts.
 alias gbvv="git branch -vv"
-alias gcAm='git add . && gcam'
+alias gcAm='git add . && git commit --message'
 alias gC='git checkout'
 alias gCf='git checkout -f'
 alias gS='git status'
+alias gsu='git stash -u'
+alias gsA='git stash -a'
 alias gD='git diff'
 alias gmc='git merge --continue'
 alias gpu='git push -u'
@@ -44,7 +46,7 @@ alias gP="git pull"
 alias mS='mbox status'
 alias mpi='mbox pod install'
 alias mpu='mbox pod update'
-alias mff='mbox feature free'
+alias mff='mbox git add . && mbox feature free'
 alias mfs='mbox git add . && mbox feature start'
 alias mfr='mbox feature remove'
 alias mfm='mbox feature merge'
