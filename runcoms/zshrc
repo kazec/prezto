@@ -53,6 +53,11 @@ alias mfm='mbox feature merge'
 alias mdd='mbox fastlane do_debug_config'
 alias mud='mbox fastlane undo_debug_config'
 
+## Java shortcuts.
+alias jhu="unset JAVA_HOME"
+alias jh8="export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)"
+alias jh11="export JAVA_HOME=$(/usr/libexec/java_home -v 11)"
+
 ## Misc shortcuts.
 alias lg='la | grep'
 alias pg='ps aux | grep'

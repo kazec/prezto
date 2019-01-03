@@ -5,8 +5,9 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+export GOPATH=$HOME/.go
 export ZDOTDIR="$HOME/.zsh"
+export GPG_TTY=$(tty)
 export CURL_HOME="$HOME/.config/curl"
 export PIP_CONFIG_FILE="$HOME/.config/pip/config"
-export GOPATH=$HOME/.go
-export GPG_TTY=$(tty)
+export ANDROID_SDK_ROOT=/usr/local/share/android-sdk

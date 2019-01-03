@@ -38,6 +38,7 @@ typeset -gU cdpath fpath mailpath path
 path=(
   /usr/local/{bin,sbin}
   $HOME/{.scripts,.cargo/bin,.flutter-sdk/bin}
+  $ANDROID_SDK_ROOT/{tools,platform-tools}
   $path
 )
 
@@ -59,9 +60,3 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_AUTO_UPDATE=1
 # export HOMEBREW_NO_GITHUB_API=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
-
-#
-# Android
-#
-export ANDROID_NDK_HOME=/usr/local/share/android-ndk
-export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
