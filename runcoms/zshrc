@@ -44,6 +44,7 @@ alias gpu='git push -u'
 alias gP="git pull"
 
 ## Misc shortcuts.
+alias lg='la | grep'
 alias pg='ps aux | grep'
 alias py='python'
 alias py3='python3'
