@@ -50,6 +50,7 @@ alias py3='python3'
 alias spm='swift package'
 alias ydl='youtube-dl'
 alias sml='streamlink'
+alias sha256='shasum -a 256'
 
 # Functions
 
@@ -57,11 +58,12 @@ alias sml='streamlink'
 function proxyon() {
   local host_port='127.0.0.1:8080'
 
+  export all_proxy="socks5://127.0.0.1:1080"
   export http_proxy="http://$host_port"
   export https_proxy="https://$host_port"
   git config --global http.proxy $host_port
   git config --global https.proxy $host_port
-  echo 'proxy = "socks5://'$host_port'"' >! $HOME/.config/curl/config
+  echo "proxy = \"$all_proxy\"" >! $HOME/.config/curl/config
 }
 
 function proxyoff() {
