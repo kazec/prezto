@@ -41,6 +41,10 @@ alias gD='git diff'
 alias gmc='git merge --continue'
 alias gpu='git push -u'
 alias gP="git pull"
+alias gwa="git worktree add"
+alias gwx="git worktree remove"
+alias gwl="git worktree list"
+alias gwm="git worktree move"
 
 ## MBox shortcuts.
 alias mS='mbox status'
