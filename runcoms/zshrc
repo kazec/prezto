@@ -78,21 +78,21 @@ alias py3='python3'
 alias spm='swift package'
 alias ydl='youtube-dl'
 alias sml='streamlink'
+alias sha256='shasum -a 256'
 alias ring='afplay /System/Library/Sounds/Ping.aiff -v 2'
 
 # Functions
 
 ## Enable/Disable proxy
 function proxyon() {
-  local host='127.0.0.1'
-  local http_port='8080'
-  local socks_port='1080'
+  local host_port='127.0.0.1:8080'
 
-  export http_proxy="http://$host:$http_port"
-  export https_proxy="https://$host:$http_port"
-  git config --global http.proxy "$host:$http_port"
-  git config --global https.proxy "$host:$http_port"
-  echo 'proxy = "socks5://'$host:$socks_port'"' >! $HOME/.config/curl/config
+  export all_proxy="socks5://127.0.0.1:1080"
+  export http_proxy="http://$host_port"
+  export https_proxy="https://$host_port"
+  git config --global http.proxy $host_port
+  git config --global https.proxy $host_port
+  echo "proxy = \"$all_proxy\"" >! $HOME/.config/curl/config
 }
 
 function proxyoff() {
