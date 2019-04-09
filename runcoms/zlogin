@@ -14,13 +14,21 @@
   fi
 } &!
 
-# Execute code only if STDERR is bound to a TTY.
-# [[ -o INTERACTIVE && -t 2 ]] && {
-#
-#   # Print a random, hopefully interesting, adage.
-#   if (( $+commands[fortune] )); then
-#     fortune -s
-#     print
-#   fi
-#
-# } >&2
+
+# Expand alias
+_alias_for() {
+  [[ $1 =~ '[[:punct:]]' ]] && return
+  local found="$(type ${1} | sed -nE "/^${1} is an alias for (.+)/s//\\1/p")"
+  [[ -n $found ]] && echo "${found%\'}"
+}
+
+_expand_command_line() {
+  [[ $# -eq 0 ]] && return
+  local found_alias="$(_alias_for $1)"
+  if [[ -n $found_alias ]]; then
+    echo "\033[32mCommand: \033[0;96m${found_alias}\033[0m"
+  fi
+}
+
+autoload -U add-zsh-hook # Load the zsh hook module. 
+add-zsh-hook preexec _expand_command_line # Adds the hook 

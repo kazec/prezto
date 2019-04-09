@@ -48,19 +48,27 @@ alias gwm="git worktree move"
 
 ## MBox shortcuts.
 alias mS='mbox status'
-alias mpi='mbox pod install'
+alias mpi='mbox pod install; ring'
+alias mpid='mbox pod install && mbox aweme debug; ring'
 alias mpu='mbox pod update'
 alias mff='mbox git add . && mbox feature free'
 alias mfs='mbox git add . && mbox feature start'
-alias mfr='mbox feature remove'
+alias mfr='mbox feature rename'
+alias mfx='mbox feature remove'
 alias mfm='mbox feature merge'
+alias mfl='mbox feature list'
 alias mdd='mbox fastlane do_debug_config'
 alias mud='mbox fastlane undo_debug_config'
+alias mgS='mbox git status'
+alias mgp='mbox git push'
+alias mgP='mbox git pull'
+alias mgpf='mbox git push --force'
+alias mgfm='mbox git fetch && mbox merge'
 
 ## Java shortcuts.
 alias jhu="unset JAVA_HOME"
 alias jh8="export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)"
-alias jh11="export JAVA_HOME=$(/usr/libexec/java_home -v 11)"
+alias jh12="export JAVA_HOME=$(/usr/libexec/java_home -v 12)"
 
 ## Misc shortcuts.
 alias lg='la | grep'
@@ -70,6 +78,7 @@ alias py3='python3'
 alias spm='swift package'
 alias ydl='youtube-dl'
 alias sml='streamlink'
+alias ring='afplay /System/Library/Sounds/Ping.aiff -v 2'
 
 # Functions
 
