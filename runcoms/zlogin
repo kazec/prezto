@@ -17,8 +17,9 @@
 
 # Expand alias
 _alias_for() {
-  [[ $1 =~ '[[:punct:]]' ]] && return
-  local found="$(type ${1} | sed -nE "/^${1} is an alias for (.+)/s//\\1/p")"
+  local cmd="$(echo $1 | cut -d" " -f1)"
+  [[ ($cmd =~ '[[:punct:]]') ]] && return
+  local found="$(type ${cmd} | sed -nE "/^${cmd} is an alias for (.+)/s//\\1/p")"
   [[ -n $found ]] && echo "${found%\'}"
 }
 
