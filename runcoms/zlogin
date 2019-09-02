@@ -19,7 +19,7 @@
 _alias_for() {
   local cmd="$(echo $1 | cut -d" " -f1)"
   [[ ($cmd =~ '[[:punct:]]') ]] && return
-  local found="$(type ${cmd} | sed -nE "/^${cmd} is an alias for (.+)/s//\\1/p")"
+  local found="$(type $cmd | sed -nE "/^$cmd is an alias for (.+)/s//\\1/p")"
   [[ -n $found ]] && echo "${found%\'}"
 }
 
@@ -27,7 +27,7 @@ _expand_command_line() {
   [[ $# -eq 0 ]] && return
   local found_alias="$(_alias_for $1)"
   if [[ -n $found_alias ]]; then
-    echo "\033[32mCommand: \033[0;96m${found_alias}\033[0m"
+    echo "\033[32mCommand: \033[0;96m$found_alias\033[0m"
   fi
 }
 
