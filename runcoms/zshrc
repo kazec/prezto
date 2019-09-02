@@ -45,6 +45,8 @@ alias gwa="git worktree add"
 alias gwx="git worktree remove"
 alias gwl="git worktree list"
 alias gwm="git worktree move"
+alias gwp="git worktree prune"
+alias gdangling="git fsck --no-reflog | awk '/dangling commit/ {print $3}' | xargs -n1 git log -p -1 | cat"
 
 ## MBox shortcuts.
 alias mS='mbox status'
@@ -83,6 +85,7 @@ alias ydl='youtube-dl'
 alias sml='streamlink'
 alias sha256='shasum -a 256'
 alias ring='afplay /System/Library/Sounds/Ping.aiff -v 2'
+alias brewU='brew update && brew upgrade'
 
 # Functions
 
@@ -182,22 +185,28 @@ function flushdns() {
 
 ## Create application icon file from an 1024px master file.
 function mkicns() {
-    if [[ -z "$@" ]]; then
-        echo "Input file missing"
-    else
-        filename=${1%.*}
-        mkdir $filename.iconset
-        sips -z 16 16   $1 --out $filename.iconset/icon_16x16.png
-        sips -z 32 32   $1 --out $filename.iconset/icon_16x16@2x.png
-        sips -z 32 32   $1 --out $filename.iconset/icon_32x32.png
-        sips -z 64 64   $1 --out $filename.iconset/icon_32x32@2x.png
-        sips -z 128 128 $1 --out $filename.iconset/icon_128x128.png
-        sips -z 256 256 $1 --out $filename.iconset/icon_128x128@2x.png
-        sips -z 256 256 $1 --out $filename.iconset/icon_256x256.png
-        sips -z 512 512 $1 --out $filename.iconset/icon_256x256@2x.png
-        sips -z 512 512 $1 --out $filename.iconset/icon_512x512.png
-        cp $1 $filename.iconset/icon_512x512@2x.png
-        iconutil -c icns $filename.iconset
-        rm -r $filename.iconset
-    fi
+  if [[ -z "$@" ]]; then
+    echo "Input file missing"
+  else
+    filename=${1%.*}
+    mkdir $filename.iconset
+    sips -z 16 16   $1 --out $filename.iconset/icon_16x16.png
+    sips -z 32 32   $1 --out $filename.iconset/icon_16x16@2x.png
+    sips -z 32 32   $1 --out $filename.iconset/icon_32x32.png
+    sips -z 64 64   $1 --out $filename.iconset/icon_32x32@2x.png
+    sips -z 128 128 $1 --out $filename.iconset/icon_128x128.png
+    sips -z 256 256 $1 --out $filename.iconset/icon_128x128@2x.png
+    sips -z 256 256 $1 --out $filename.iconset/icon_256x256.png
+    sips -z 512 512 $1 --out $filename.iconset/icon_256x256@2x.png
+    sips -z 512 512 $1 --out $filename.iconset/icon_512x512.png
+    cp $1 $filename.iconset/icon_512x512@2x.png
+    iconutil -c icns $filename.iconset
+    rm -r $filename.iconset
+  fi
+}
+
+## Symbolicate crash
+function symcrash() {
+  export DEVELOPER_DIR=$(xcode-select --print-path)
+  /Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash "$@"
 }
