@@ -8,12 +8,11 @@
 # Execute code that does not affect the current session in the background.
 {
   # Compile the completion dump to increase startup speed.
-  zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+  zcompdump="${XDG_CACHE_HOME:-$HOME/.cache}/prezto/zcompdump"
   if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
     zcompile "$zcompdump"
   fi
 } &!
-
 
 # Expand alias
 _alias_for() {
@@ -31,5 +30,5 @@ _expand_command_line() {
   fi
 }
 
-autoload -U add-zsh-hook # Load the zsh hook module. 
-add-zsh-hook preexec _expand_command_line # Adds the hook 
+autoload -U add-zsh-hook # Load the zsh hook module.
+add-zsh-hook preexec _expand_command_line # Adds the hook
