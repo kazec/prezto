@@ -1,38 +1,30 @@
-#
-# Executes commands at the start of an interactive session.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
-
 # Sources
 
-## Source Prezto.
+## Source Prezto
 source "$ZDOTDIR/prezto/init.zsh"
 
-## Source .profile.
+## Source .profile
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
+
+## Source working profile
+source "$ZDOTDIR/prezto/profiles/current.zsh"
 
 # Aliases
 
-## Project shortcuts.
+## Project shortcuts
 alias p='cd ~/Workspaces'
 alias pios='cd ~/Workspaces/iOS'
 alias pmisc='cd ~/Workspaces/Misc'
 alias pswift='cd ~/Workspaces/Swift'
 alias pfrontend='cd ~/Workspaces/Frontend'
 
-## Show hidden files in Finder.app.
+## Show hidden files in Finder.app
 alias fshow='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
 alias fhide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
 
-## Enable/Disable V2Ray
-alias v2on='launchctl load ~/Library/LaunchAgents/org.v2ray.plist'
-alias v2off='launchctl unload ~/Library/LaunchAgents/org.v2ray.plist'
-alias v2rld='v2off && v2on'
-alias v2edit='cot ~/.config/v2ray/config.json'
-
-## Git shortcuts.
+## Git shortcuts
+alias git='git -c core.hooksPath=/dev/null'
+alias gamend='git commit --amend --reuse-message HEAD'
 alias gbvv="git branch -vv"
 alias gcAm='git add . && git commit --message'
 alias gC='git checkout'
@@ -44,6 +36,9 @@ alias gD='git diff'
 alias gmc='git merge --continue'
 alias gpu='git push -u'
 alias gP="git pull"
+alias gl1="gl -1"
+alias gl2="gl -2"
+alias gl3="gl -3"
 alias gwa="git worktree add"
 alias gwx="git worktree remove"
 alias gwl="git worktree list"
@@ -51,13 +46,12 @@ alias gwm="git worktree move"
 alias gwp="git worktree prune"
 alias gdangling="git fsck --no-reflog | awk '/dangling commit/ {print $3}' | xargs -n1 git log -p -1 | cat"
 
-
-## Java shortcuts.
+## Java shortcuts
 alias jhu='unset JAVA_HOME'
 alias jh8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
 alias jh12='export JAVA_HOME=$(/usr/libexec/java_home -v 12)'
 
-## Misc shortcuts.
+## Misc shortcuts
 alias lg='la | grep'
 alias pg='ps aux | grep'
 alias py='python'
@@ -73,17 +67,17 @@ alias brewU='brew update && brew upgrade'
 
 ## Enable/Disable proxy
 function proxyon() {
-  local host_port='127.0.0.1:8080'
-
-  export all_proxy="socks5://127.0.0.1:1080"
-  export http_proxy="http://$host_port"
-  export https_proxy="https://$host_port"
-  git config --global http.proxy $host_port
-  git config --global https.proxy $host_port
+  # local host_port='127.0.0.1:8080'
+  export all_proxy="socks5://127.0.0.1:7891"
+  export http_proxy=$all_proxy
+  export https_proxy=$all_proxy
+  git config --global http.proxy $https_proxy
+  git config --global https.proxy $https_proxy
   echo "proxy = \"$all_proxy\"" >! $HOME/.config/curl/config
 }
 
 function proxyoff() {
+  export all_proxy=''
   export http_proxy=''
   export https_proxy=''
   git config --global http.proxy ''
@@ -91,56 +85,56 @@ function proxyoff() {
   echo '' >! $HOME/.config/curl/config
 }
 
-## Open $(pwd)/$@ in Finder.app.
+## Open $(pwd)/$@ in Finder.app
 function opend() {
   if [ $# -eq 0 ]; then
-		open .;
-	else
-		open "$@";
-	fi;
+      open .;
+  else
+      open "$@";
+  fi;
 }
 
-## Reload shell.
+## Reload shell
 function reload() {
   local compdump_files="$ZDOTDIR/.zcompdump*"
 
   if ls $compdump_files &> /dev/null; then
-    rm -f $compdump_files
+      rm -f $compdump_files
   fi
 
   exec $SHELL -l
 }
 
-## File size calculator.
+## File size calculator
 function filesize() {
-	if du -b /dev/null > /dev/null 2>&1; then
-		local arg=-sbh;
-	else
-		local arg=-sh;
-	fi
-	if [[ -n "$@" ]]; then
-		du $arg -- "$@";
-	else
-		du $arg .[^.]* ./*;
-	fi;
+  if du -b /dev/null > /dev/null 2>&1; then
+      local arg=-sbh;
+  else
+      local arg=-sh;
+  fi
+  if [[ -n "$@" ]]; then
+      du $arg -- "$@";
+  else
+      du $arg .[^.]* ./*;
+  fi;
 }
 
-## Open man page with Dash app.
+## Open man page with Dash app
 function dman() {
   open "dash://man:$@"
 }
 
-## Open man page in a easy-to-read, standalone window.
+## Open man page in a easy-to-read, standalone window
 function xman() {
   open "x-man-page://$@"
 }
 
-## Move file to directory without retyping the name.
+## Move file to directory without retyping the name
 function mv2d() {
   echo mv "$1" "$2/${1##*/}_$3"
 }
 
-## Encode/Decode string using base64.
+## Encode/Decode string using base64
 function b64e() {
   echo "$@" | base64
 }
@@ -149,23 +143,23 @@ function b64d() {
   echo "$@" | base64 -D
 }
 
-## Find current IP address.
+## Find current IP address
 function myip() {
   dig +short myip.opendns.com @resolver1.opendns.com
 }
 
-## Generate a secure password.
+## Generate a secure password
 function passgen() {
   LC_ALL=C tr -dc ${1:-"[:graph:]"} < /dev/urandom | head -c ${2:-20}
 }
 
-## Flush DNS caches.
+## Flush DNS caches
 function flushdns() {
   sudo dscacheutil -flushcache && \
   sudo killall -HUP mDNSResponder
 }
 
-## Create application icon file from an 1024px master file.
+## Create application icon file from an 1024px master file
 function mkicns() {
   if [[ -z "$@" ]]; then
     echo "Input file missing"
