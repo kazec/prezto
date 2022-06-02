@@ -62,6 +62,7 @@ alias sml='streamlink'
 alias sha256='shasum -a 256'
 alias ring='afplay /System/Library/Sounds/Ping.aiff -v 2'
 alias brewU='brew update && brew upgrade'
+alias rgf='rg -F'
 
 # Functions
 
@@ -185,4 +186,25 @@ function mkicns() {
 function symcrash() {
   export DEVELOPER_DIR=$(xcode-select --print-path)
   /Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash "$@"
+}
+
+function forkall() {
+  for d in */ ; do
+    local gd="$d.git"
+    if [ -e $gd ]; then
+      local pd=$(pwd);
+      cd $d
+      local gs="`LC_ALL=C git status --porcelain --ignore-submodules -unormal 2>&1`"
+      [[ -n $gs ]] && fork .
+      cd $pd
+    fi
+  done
+}
+
+function pman() {
+  local f="/tmp/pman_postscripts_$1.ps"
+  if [ ! -f $f ]; then
+    man -t $1 > $f
+  fi
+  open -a Preview $f
 }
