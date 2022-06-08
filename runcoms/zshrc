@@ -24,7 +24,7 @@ alias fhide='defaults write com.apple.finder AppleShowAllFiles -bool false && ki
 
 ## Git shortcuts
 alias git='git -c core.hooksPath=/dev/null'
-alias gamend='git commit --amend --reuse-message HEAD'
+alias gamend='git commit -a --amend --reuse-message HEAD'
 alias gbvv="git branch -vv"
 alias gcAm='git add . && git commit --message'
 alias gC='git checkout'

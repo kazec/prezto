@@ -36,12 +36,15 @@ alias mgcm='mbox git commit -m'
 alias mgcam='mbox git commit -a -m'
 alias mgm='mbox git merge'
 alias mgS='mbox git status'
-alias mgp='mbox git push'
-alias mgP='mbox git pull'
+alias mgs='mbox git-sheet status'
+alias mgp='mbox git-sheet push'
+alias mgP='mbox git-sheet pull'
 alias mgpf='mbox git push --force-with-lease'
 alias mgupdate='mbox git fetch origin develop:develop && mbox git checkout origin/develop'
-alias mopen='mbox go'
+alias mopen='open "$(basename $(PWD)).xcodeproj"'
 alias mfork='mbox fork --all'
+alias mcu='mbox container use'
+alias mcutt='mbox container use TikTok'
 
 # MBox functions
 
