@@ -63,6 +63,7 @@ alias sha256='shasum -a 256'
 alias ring='afplay /System/Library/Sounds/Ping.aiff -v 2'
 alias brewU='brew update && brew upgrade'
 alias rgf='rg -F'
+alias kxcd='killall Xcode'
 
 # Functions
 
