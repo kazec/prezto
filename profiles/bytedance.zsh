@@ -10,9 +10,9 @@ alias tt2='cd ~/Workspaces/ByteDance/TikTok2'
 alias mSA='mA ~/Workspaces/ByteDance/TikTok1 ~/Workspaces/ByteDance/TikTok2 status'
 alias mUA='mA ~/Workspaces/ByteDance/TikTok1 ~/Workspaces/ByteDance/TikTok2 update'
 alias mpi='mbox jojo install; ring'
-alias mpio='mbox jojo install && mbox go; ring'
-alias mpid="mbox jojo install && mbox aweme debug --udid=$MBOX_DEBUG_DEVICE_UDID; ring"
-alias mpido="mbox jojo install && mbox aweme debug --udid=$MBOX_DEBUG_DEVICE_UDID && mbox go; ring"
+alias mpio='mbox jojo install && mopen; ring'
+alias mpid="mbox jojo install && mbox cosign --udid=$MBOX_DEBUG_DEVICE_UDID; ring"
+alias mpido="mbox jojo install && mbox cosign --udid=$MBOX_DEBUG_DEVICE_UDID && mopen; ring"
 alias mpu='mbox pod update'
 alias mbx='mbox remove'
 alias mbxr='mbox remove --include-repo'
@@ -45,6 +45,7 @@ alias mopen='open "$(basename $(PWD)).xcodeproj"'
 alias mfork='mbox fork --all'
 alias mcu='mbox container use'
 alias mcutt='mbox container use TikTok'
+alias kbzl='killall jojo-cache-manager; killall bazel-remote'
 
 # MBox functions
 
