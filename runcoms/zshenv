@@ -1,9 +1,6 @@
 #
 # Defines environment variables.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
 
 export GOPATH=$HOME/.go
 export ZDOTDIR="$HOME/.zsh"
@@ -11,4 +8,3 @@ export GPG_TTY=$(tty)
 export GIT_MERGE_AUTOEDIT=no
 export CURL_HOME="$HOME/.config/curl"
 export PIP_CONFIG_FILE="$HOME/.config/pip/config"
-export GIT_MERGE_AUTOEDIT=no
