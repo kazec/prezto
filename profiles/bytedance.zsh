@@ -8,13 +8,12 @@ alias mdd12p="export MBOX_DEBUG_DEVICE_UDID='00008101-000815663410001E'"
 mdd12p
 
 ## Project aliases
-alias tt='cd ~/Workspaces/ByteDance/TikTok'
-alias tt1='cd ~/Workspaces/ByteDance/TikTok1'
-alias tt2='cd ~/Workspaces/ByteDance/TikTok2'
+alias tt1='cd ~/Projects/ByteDance/TikTok1'
+alias tt2='cd ~/Projects/ByteDance/TikTok2'
 
 ## MBox aliases
-alias mSA='mA ~/Workspaces/ByteDance/TikTok1 ~/Workspaces/ByteDance/TikTok2 status'
-alias mUA='mA ~/Workspaces/ByteDance/TikTok1 ~/Workspaces/ByteDance/TikTok2 update'
+alias mSA='mA ~/Projects/ByteDance/TikTok1 ~/Projects/ByteDance/TikTok2 status'
+alias mUA='mA ~/Projects/ByteDance/TikTok1 ~/Projects/ByteDance/TikTok2 update'
 alias mpi='mbox jojo install; ring'
 alias mpio='mbox jojo install && mopen; ring'
 alias mpid='mbox jojo install && mbox cosign --udid=$MBOX_DEBUG_DEVICE_UDID; ring'

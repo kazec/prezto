@@ -12,11 +12,11 @@ source "$ZDOTDIR/prezto/profiles/current.zsh"
 # Aliases
 
 ## Project shortcuts
-alias p='cd ~/Workspaces'
-alias pios='cd ~/Workspaces/iOS'
-alias pmisc='cd ~/Workspaces/Misc'
-alias pswift='cd ~/Workspaces/Swift'
-alias pfrontend='cd ~/Workspaces/Frontend'
+alias p='cd ~/Projects'
+alias pios='cd ~/Projects/iOS'
+alias pmisc='cd ~/Projects/Misc'
+alias pswift='cd ~/Projects/Swift'
+alias pfrontend='cd ~/Projects/Frontend'
 
 ## Show hidden files in Finder.app
 alias fshow='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
