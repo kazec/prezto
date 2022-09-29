@@ -241,4 +241,4 @@ zstyle ':prezto:module:utility' safe-ops 'no'
 # SSH
 #
 
-zstyle ':prezto:module:ssh:load' identities 'github_rsa' 'bitbucket_rsa' 'router_rsa'
+zstyle ':prezto:module:ssh:load' identities 'kazecx_gmail.ed25519' 'kazecx_gmail.signing.ed25519' 'kazec.liu_bytedance.ed25519'
