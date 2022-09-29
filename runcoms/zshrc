@@ -24,6 +24,7 @@ alias fhide='defaults write com.apple.finder AppleShowAllFiles -bool false && ki
 
 ## Git shortcuts
 alias git='git -c core.hooksPath=/dev/null'
+alias gclone='git clone --recurse-submodules -j8'
 alias gamend='git commit -a --amend --reuse-message HEAD'
 alias gbvv="git branch -vv"
 alias gcAm='git add . && git commit --message'
@@ -32,6 +33,7 @@ alias gCf='git checkout -f'
 alias gS='git status'
 alias gsu='git stash -u'
 alias gsA='git stash -a'
+alias gwR='git stash -u && git reset --hard'
 alias gD='git diff'
 alias gmc='git merge --continue'
 alias gpu='git push -u'
@@ -200,6 +202,14 @@ function forkall() {
       cd $pd
     fi
   done
+}
+
+function pushall() {
+  find . -maxdepth 2 -name .git | rev | cut -c 6- | rev | parallel -j60 'echo -n {}... && git -C {} push'
+}
+
+function pullall() {
+  find . -maxdepth 2 -name .git | rev | cut -c 6- | rev | parallel -j60 'echo -n {}... && git -C {} pull'
 }
 
 function pman() {

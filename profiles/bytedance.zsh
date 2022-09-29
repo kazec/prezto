@@ -1,8 +1,14 @@
+## Sources
+[ -f "$HOME/.bytebm/config/config.sh" ] && . "$HOME/.bytebm/config/config.sh"
+
 ## Exports
 export FASTLANE_SKIP_UPDATE_CHECK=1
-export MBOX_DEBUG_DEVICE_UDID='00008020-001309A10E12002E'
+alias mddxr="export MBOX_DEBUG_DEVICE_UDID='00008020-001309A10E12002E'"
+alias mdd12p="export MBOX_DEBUG_DEVICE_UDID='00008101-000815663410001E'"
+mdd12p
 
 ## Project aliases
+alias tt='cd ~/Workspaces/ByteDance/TikTok'
 alias tt1='cd ~/Workspaces/ByteDance/TikTok1'
 alias tt2='cd ~/Workspaces/ByteDance/TikTok2'
 
@@ -11,8 +17,11 @@ alias mSA='mA ~/Workspaces/ByteDance/TikTok1 ~/Workspaces/ByteDance/TikTok2 stat
 alias mUA='mA ~/Workspaces/ByteDance/TikTok1 ~/Workspaces/ByteDance/TikTok2 update'
 alias mpi='mbox jojo install; ring'
 alias mpio='mbox jojo install && mopen; ring'
-alias mpid="mbox jojo install && mbox cosign --udid=$MBOX_DEBUG_DEVICE_UDID; ring"
-alias mpido="mbox jojo install && mbox cosign --udid=$MBOX_DEBUG_DEVICE_UDID && mopen; ring"
+alias mpid='mbox jojo install && mbox cosign --udid=$MBOX_DEBUG_DEVICE_UDID; ring'
+alias mpido='mbox jojo install && mbox cosign --udid=$MBOX_DEBUG_DEVICE_UDID && mopen; ring'
+alias mpidb='mbox jojo install && mbox cosign --udid=$MBOX_DEBUG_DEVICE_UDID; jojob; mopen; ring'
+alias jojob=".jojo/jojo build -y TikTok/Aweme/project.yml -t Musically -s MusicallyInhouseDebug -a arm64 --plugin TikTok/jojo_plugin.py --script_path TikTok/Aweme/ScriptsPhases --use-cache"
+alias jojobt=".jojo/jojo build -y TikTok/Aweme/project.yml -t TikTok -s TikTokInhouseDebug -a arm64 --plugin TikTok/jojo_plugin.py --script_path TikTok/Aweme/ScriptsPhases --use-cache"
 alias mpu='mbox pod update'
 alias mbx='mbox remove'
 alias mbxr='mbox remove --include-repo'
@@ -27,7 +36,7 @@ alias mfr='mbox feature rename'
 alias mfx='mbox feature remove --include-repo'
 alias mfm='mbox feature merge'
 alias mfl='mbox feature list'
-alias mdd="mbox cosign --udid=$MBOX_DEBUG_DEVICE_UDID"
+alias mdd='mbox cosign --udid=$MBOX_DEBUG_DEVICE_UDID'
 alias mud='mbox cosign --undo'
 alias mgC='mbox git checkout'
 alias mgCf='mbox git checkout -f'
