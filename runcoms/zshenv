@@ -8,3 +8,12 @@ export GPG_TTY=$(tty)
 export GIT_MERGE_AUTOEDIT=no
 export CURL_HOME="$HOME/.config/curl"
 export PIP_CONFIG_FILE="$HOME/.config/pip/config"
+
+# Make Homebrew binaries available system-wide
+if [[ $(/usr/bin/uname -m) == "arm64" ]]; then
+  export APPLE_SILICON=1
+  BREW="/opt/homebrew/bin/brew"
+  else
+  BREW="/usr/local/bin/brew"
+fi
+[ -f $BREW ] && $BREW shellenv >/dev/null 2>&1
