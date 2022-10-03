@@ -3,11 +3,14 @@
 ## Source Prezto
 source "$ZDOTDIR/prezto/init.zsh"
 
+## Source fzf
+[ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && source $(brew --prefix)/etc/profile.d/autojump.sh
+
 ## Source .profile
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
 
-## Source working profile
-source "$ZDOTDIR/prezto/profiles/current.zsh"
+## Source local profile
+[[ -s "$ZDOTDIR/prezto/local.zsh" ]] && source "$ZDOTDIR/prezto/local.zsh"
 
 # Aliases
 
