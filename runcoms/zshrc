@@ -4,6 +4,10 @@
 source "$ZDOTDIR/prezto/init.zsh"
 
 ## Source fzf
+[[ $- == *i* ]] && source $(brew --prefix)/opt/fzf/shell/completion.zsh 2> /dev/null
+source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
+
+## Source autojump
 [ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && source $(brew --prefix)/etc/profile.d/autojump.sh
 
 ## Source .profile
