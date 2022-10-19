@@ -19,5 +19,5 @@ function () {
   else
     BREW="/usr/local/bin/brew"
   fi
-  [ -f $BREW ] && $BREW shellenv >/dev/null 2>&1
+  [ -f $BREW ] && eval $($BREW shellenv)
 }
