@@ -18,13 +18,6 @@ source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
 
 # Aliases
 
-## Project shortcuts
-alias p='cd ~/Projects'
-alias pios='cd ~/Projects/iOS'
-alias pmisc='cd ~/Projects/Misc'
-alias pswift='cd ~/Projects/Swift'
-alias pfrontend='cd ~/Projects/Frontend'
-
 ## Show hidden files in Finder.app
 alias fshow='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
 alias fhide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
