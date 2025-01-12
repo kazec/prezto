@@ -1,5 +1,8 @@
 # Sources
 
+# Warpify
+# printf '\eP$f{"hook": "SourcedRcFileForWarp", "value": { "shell": "zsh"}}\x9c'
+
 ## Source Prezto
 source "$ZDOTDIR/prezto/init.zsh"
 
@@ -23,7 +26,7 @@ alias fshow='defaults write com.apple.finder AppleShowAllFiles -bool true && kil
 alias fhide='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
 
 ## Git shortcuts
-alias git='git -c core.hooksPath=/dev/null'
+# alias git='git -c core.hooksPath=/dev/null'
 alias gclone='git clone --recurse-submodules -j8'
 alias gamend='git commit -a --amend --reuse-message HEAD'
 alias gbvv="git branch -vv"
@@ -54,10 +57,10 @@ alias jh8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
 alias jh12='export JAVA_HOME=$(/usr/libexec/java_home -v 12)'
 
 ## Misc shortcuts
-alias ls='exa -l --icons --group-directories-first'
-alias ll='exa -lh --icons --group-directories-first'
-alias la='exa -lha --icons --group-directories-first'
-alias lD='exa -lhD --icons'
+alias ls='eza -l --icons --group-directories-first'
+alias ll='eza -lh --icons --group-directories-first'
+alias la='eza -lha --icons --group-directories-first'
+alias lD='eza -lhD --icons'
 alias lt1='la -TL=1'
 alias lt2='la -TL=2'
 alias lt3='la -TL=3'
