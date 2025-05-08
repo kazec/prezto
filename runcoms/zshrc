@@ -54,6 +54,7 @@ alias gdangling="git fsck --no-reflog | awk '/dangling commit/ {print $3}' | xar
 ## Java shortcuts
 alias jhu='unset JAVA_HOME'
 alias jh8='export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)'
+alias jh11='export JAVA_HOME=$(/usr/libexec/java_home -v 11)'
 alias jh12='export JAVA_HOME=$(/usr/libexec/java_home -v 12)'
 
 ## Misc shortcuts
