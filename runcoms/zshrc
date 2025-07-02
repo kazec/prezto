@@ -24,3 +24,10 @@ source $ZDOTDIR/prezto/aliases.zsh
 
 # Functions
 source $ZDOTDIR/prezto/functions.zsh
+
+# SSH
+alias ssh-add-all='ssh-add --apple-use-keychain ${HOME}/.ssh/*.pub(:r)'
+
+if ! ssh-add -l >/dev/null 2>&1; then
+  ssh-add-all
+fi
